@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Компании</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+    <div class="container mt-5 mb-5 py-5 px-5">
+        <div class="row">
+            <div class="col"> <h1 style="align-self: center; align-content: center">Компании</h1></div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col"><a class="btn btn-primary" th:href="@{/add-company}">Добавить</a></div>
+            <div class="col-8" style="align-items: center">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="table-secondary">
+                            <th scope="col">№</th>
+                            <th scope="col">Название компании</th>
+                            <th scope="col">Тип деятельности</th>
+                            <th scope="col">Адрес</th>
+                            <th scope="col" colspan="2">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="company : ${listCompanies}" >
+                            <td th:text="${company.id}"></td>
+                            <td th:text="${company.name}"></td>
+                            <td th:text="${company.type}"></td>
+                            <td th:text="${company.address}"></td>
+                            <td><a class="btn btn-outline-primary" th:href="@{/update-company/{id}(id=${company.id})}">Обновить</a></td>
+                            <td><a class="btn btn-outline-warning" th:href="@{/delete-company/{id}(id=${company.id})}">Удалить</a></td>
+                        </tr>
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

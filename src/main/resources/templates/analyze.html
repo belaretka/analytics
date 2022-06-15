@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<!--таблица, pieChart, кнопка распечатать-->
+<div class="container mt-2 mb-2 py-2 px-2">
+    <div class="row" style="align-content: center; align-items: center;align-self: center; height: 100px">
+        <div class="col">
+            <h3>Компания: <span style="font-style: italic">Горизонт</span></h3>
+            <h3>Вид деятельности: <span style="font-style: italic">Электро-техническая</span></h3>
+            <h3>Период: <span style="font-style: italic"> 2012-12-31</span></h3>
+        </div>
+    </div>
+    <div class="row" style="align-content: center; align-items: center;align-self: center; height: 500px">
+        <div class="col">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>Коэффициент текущей ликвидности</td>
+                    <td style="color: #91d12d">1,3459</td>
+                    <td> 1,2 - 2 </td>
+                </tr>
+                <tr>
+                    <td>Коэффициент обеспеченности собственными оборотными средствами</td>
+                    <td style="color: #f1b94a">0,2292</td>
+                    <td> 0,05 - 0,3</td>
+                </tr>
+                <tr>
+                    <td>Коэффициент обеспеченности обязательств активами</td>
+                    <td style="color: #f1b94a">0,01456</td>
+                    <td> < 0,9 </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>Итог: <span style="color: #91d12d; font-style: italic">ПЛАТЕЖЕСПОСОБНА</span></p>
+        </div>
+        <div class="col">
+            <div>
+                <canvas style="width: 400px" id="capitalChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <a class="btn btn-outline-secondary" th:href="@{/}">Назад</a>
+            <!-- <a class="btn btn-outline-warning" th:href="@{/print-case}">Распечатать</a>-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var capitalCanvas = $("#capitalChart");
+
+    Chart.defaults.global.defaultFontFamily = "Arial";
+    Chart.defaults.global.defaultFontSize = 12;
+    Chart.defaults.global.defaultColor = "black";
+
+    var capitalData = {
+        labels: ["Основные средства","Уставной капитал","Резервный капитал","Оборотный капитал"],
+        datasets: [{
+            data: [8570700, 3259000, 606700, 3299800],
+            backgroundColor: [
+                "rgba(255, 0, 0, 0.5)",
+                "rgba(100, 255, 0, 0.5)",
+                "rgba(200, 50, 255, 0.5)",
+                "rgba(0, 100, 255, 0.5)"
+            ]
+        }]
+    };
+
+    var chartOptions = {
+        plugins: {
+            title: {
+                display: true,
+                align: "start",
+                text: "Структура капитала"
+            },
+            legend: {
+                align: "start"
+            }
+        }
+    };
+
+    var capitalChart = new Chart(capitalCanvas, {
+        type: 'polarArea',
+        data: capitalData,
+        options: chartOptions
+    });
+
+</script>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

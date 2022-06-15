@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AnalyticsApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(AnalyticsApplication.class, args);
+        System.out.println("http://localhost:8081");
     }
 
 }

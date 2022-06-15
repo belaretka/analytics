@@ -9,4 +9,5 @@ public interface SheetService {
     void saveSheet (Sheet sheet);
     Sheet getSheetById(long id);
     void deleteSheetById(long id);
+    //List<Sheet> getAllCompanySheet(long id_company);
 }

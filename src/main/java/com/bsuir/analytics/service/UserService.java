@@ -11,5 +11,5 @@ public interface UserService {
     User getUserById(long id);
     User getUserByName(String name);
     void deleteUserById(long id);
-
+    long countAllUsers();
 }

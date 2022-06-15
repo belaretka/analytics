@@ -1,0 +1,26 @@
+<div th:fragment="header" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-1 border-bottom" style="background-color: rgba(99,114,187,0.87)">
+        <h1 class="d-flex align-items-center text-light text-decoration-none mt-2 ms-4 py-2 ">
+            <title>Финансовый калькулятор</title>
+            <span class="fs-4">Финансовый калькулятор</span>
+        </h1>
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="mt-2 ms-4 py-2 text-light align-self-center align-items-center align-content-center text-decoration-none" href="/">Главная</a>
+            <a class="mt-2 ms-4  py-2 text-light align-self-center align-items-center align-content-center text-decoration-none" sec:authorize="hasRole('ROLE_ADMIN')"  href="/users">Пользователи</a>
+            <a class="mt-2 ms-4 me-3 py-2 text-light align-self-center align-items-center align-content-center text-decoration-none" sec:authorize="hasRole('ROLE_ADMIN')"  href="/statistics">Статистика</a>
+            <a class="mt-2 ms-4 me-3 py-2 text-light align-self-center align-items-center align-content-center text-decoration-none" sec:authorize="hasRole('ROLE_ADMIN')"  href="/requested-consultation">Заявки на консультацию</a>
+            <a class="mt-2 ms-4 me-3 py-2 text-light align-self-center align-items-center align-content-center text-decoration-none" sec:authorize="hasRole('ROLE_USER')"  href="/companies">Компании</a>
+            <a class="mt-2 ms-4 me-3 py-2 text-light align-self-center align-items-center align-content-center text-decoration-none" sec:authorize="hasRole('ROLE_USER')"  href="/sheets">Балансы</a>
+            <a class="mt-2 ms-4 me-3 py-2 text-light align-self-center align-items-center align-content-center text-decoration-none" sec:authorize="hasRole('ROLE_USER')"  href="/analytics">Аналитика</a>
+            <a class="mt-2 ms-4 me-3 py-2 text-light align-self-center align-items-center align-content-center text-decoration-none" sec:authorize="hasRole('ROLE_USER')"  href="/order-consultation">Заказать консультацию</a>
+            <a class="mt-2 ms-4 me-3 py-2 text-light align-self-center  align-items-center align-content-center text-decoration-none" href="/information">Инфо</a>
+            <form class="mt-2 ms-4 me-3 align-self-center " th:action="@{/logout}" method="post">
+                <input class="btn btn-warning"  sec:authorize="isAuthenticated()" type="submit" value="Выйти"/>
+            </form>
+            <form class="mt-2 ms-4 me-3 align-self-center" th:action="@{/login}" method="post">
+                <input class="btn btn-success" sec:authorize="isAnonymous()" type="submit" value="Войти"/>
+            </form>
+
+        </nav>
+    </div>
+</div>

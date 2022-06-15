@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "sheets")
@@ -18,7 +19,8 @@ public class Sheet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_sheet;
+    @Column(name="id", nullable = false)
+    private long id;
     @Column (name = "period")
     private Date date;
 
@@ -44,12 +46,20 @@ public class Sheet {
     @Column (name = "short_liabilities")
     private double short_liabilities;
 
-    @ManyToOne
-    @JoinColumn(name = "companies_id_company", referencedColumnName = "id_company")
+    @ManyToOne(cascade=CascadeType.REFRESH)
+    @JoinColumn(name = "companies_id_company", referencedColumnName = "id")
     private Company company;
 
-    @ManyToOne
-    @JoinColumn (name = "companies_users_id_user", referencedColumnName = "id_user")
+    @ManyToOne(cascade=CascadeType.REFRESH)
+    @JoinColumn (name = "companies_users_id_user", referencedColumnName = "id")
     private User user;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sheet", cascade = CascadeType.ALL)
+    private List<Ratio> ratios;
+
+
+    public String getCompanyName() {
+        return this.company.getName();
+    }
 
 }

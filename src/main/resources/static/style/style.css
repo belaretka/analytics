@@ -1,0 +1,7 @@
+html {
+    background-image: url('../img/Banner-Icon.jpg') ;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-color: #eef7ff;
+    -webkit-background-size: cover;
+}

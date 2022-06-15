@@ -18,7 +18,8 @@ public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_company;
+    @Column(name="id", nullable = false)
+    private long id;
 
     @Column(name = "company_name")
     private String name;
@@ -27,8 +28,13 @@ public class Company {
     @Column(name = "type")
     private String type;
 
+    @Transient
+    private String username;
+    @Transient
+    private long id_user;
+
     @ManyToOne
-    @JoinColumn(name = "users_id_user", referencedColumnName = "id_user")
+    @JoinColumn(name = "users_id_user", referencedColumnName = "id")
     private User user;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", cascade = CascadeType.ALL)
@@ -40,4 +46,11 @@ public class Company {
         return user;
     }
 
+    public void setUserId (long id) {
+        this.user.setId(id);
+    }
+
+    public long getId_user(long id) {
+        return id_user;
+    }
 }

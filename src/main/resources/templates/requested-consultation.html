@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <div class="container">
+        <div class="row" style="height: 100px">
+            <div class="col">
+                <h1 style="align-self: center; align-content: center">Заказанные консультации</h1>
+            </div>
+            <div class="row" style="height: 400px; align-self: center;align-items: center;align-content: center">
+                <div class="col-2"></div>
+                <div class="col-6">
+                    <!--<p th:text="${orders}"></p>-->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th># заявки</th>
+                                <th>Телефон</th>
+                                <th>Имя</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>+375-29-753-20-43</td>
+                            <td>Татьяна</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <a class="btn btn-secondary" th:href="@{/requested-consutation}">Передать в рассмотрение</a> </div>
+            </div>
+        </div>
+    </div>
+<!--<footer th:insert="blocks/footer :: footer" style="align-content: end;align-items: end;align-self: end"></footer>-->
+</body>
+</html>

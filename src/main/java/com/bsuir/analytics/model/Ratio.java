@@ -17,7 +17,8 @@ public class Ratio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_ratio;
+    @Column(name="id", nullable = false)
+    private long id;
 
     @Column(name ="name")
     private String name;
@@ -26,7 +27,7 @@ public class Ratio {
     private double value;
 
     @ManyToOne
-    @JoinColumn (name = "sheets_id_sheet", referencedColumnName = "id_sheet")
+    @JoinColumn (name = "sheets_id_sheet", referencedColumnName = "id")
     private Sheet sheet;
 
 }
