@@ -64,4 +64,5 @@ public class CompanyController {
         companyService.deleteCompanyById(id);
         return "redirect:/companies";
     }
+    
 }
