@@ -1,14 +1,20 @@
 # analytics
+ 
+This is an application for individual entrepreneurs and small businesses to calculate the main financial indicators that will help them analyze their business, identify problem points.
 
-#### A web application that various companies can use to quickly assess the financial condition of their businesses/companies thanks to the downloaded documentation. The result of the analysis is displayed on the screen (tables, diagrams) and it is possible to print and leave a request for consultation.
+Individual entrepreneurs and small businesses can enter their accounting data
+and depending on their role following functions will be available:
 
- - Two roles: user and administrator
- - Authorization, user registration
- - Introducing multiple businesses in one User profile
- - Uploading accounting data for a specific company (also possible simply through the form)
- - The ability to print the company's balance sheet in the prescribed form
- - Creating a precedent for analyzing a company for a certain period (selected by the user)
- - Graphical representation of the capital structure (pie chart)
- - Final report with analytics
- - Ability to print a report 
- - Analytics Help
+If they are **guests**:
+- receive brief analysis
+- open a help centre (websites with reliable information, brochures)
+
+If they are **registered users**:
+- receive detailed analysis
+- book a call with a financial adviser
+- create a company profile
+
+There is also an **administrator** who:
+- manages users
+- updates the help centre.
+
